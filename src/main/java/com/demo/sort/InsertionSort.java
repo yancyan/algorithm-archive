@@ -1,21 +1,26 @@
 package com.demo.sort;
 
+/**
+ * 插入排序
+ *
+ */
 public class InsertionSort {
-    /**
-     * 依次选择元素往前比较（往前为已经进行排序的元素），
-     * 遇到比他小的元素停下并记住位置索引，迭代过的元素向后移动，然
-     * 后插入这个元素到位置索引
-     */
+
     public static void sort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            int temp = arr[i];
-            int j = i;
-            while (j > 0 && arr[j - 1] >= temp) {
-                arr[j] = arr[j - 1]; //比较以为不满足就往后移动一位
-                j--;
+        for (int i = 1, j, current; i < arr.length; i++) {
+            current = arr[i];
+            for (j = i - 1; j >= 0 && arr[j] > current; j--) {
+                arr[j + 1] = arr[j];
             }
-            arr[j] = temp;
+            arr[j + 1] = current;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] ar = new int[]{1, 3, 2, 9, 23,4, 7};
+        sort(ar);
+        for (int i : ar) {
+            System.out.print(i + ", ");
         }
     }
 }
-
