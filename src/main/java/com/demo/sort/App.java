@@ -26,7 +26,8 @@ public class App {
         int[] ar = new int[]{1, 3, 2, 9, 23,4, 7};
         // MergeSort.sort(ar);
         // SelectionSort.sort(ar);
-        ShellSort.sort(ar);
+        // ShellSort.sort(ar);
+        QuickSort.sort(ar, 0, ar.length - 1);
         for (int i : ar) {
             System.out.print(i + ", ");
         }
