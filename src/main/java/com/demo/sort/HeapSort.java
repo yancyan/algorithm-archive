@@ -22,6 +22,58 @@ public class HeapSort {
         }
     }
 
+
+// ======================= 递归堆化
+    public static void heap_sort(int[] arr, int n) {
+        build_heap(arr, n);
+        for (int i = n - 1; i > 0; i--) {
+            swap(arr, i, 0);
+            heapify(arr, i, 0);
+        }
+    }
+
+    /**
+     * @param arr 堆数组
+     * @param n 构建堆的有效长度
+     */
+    public static void build_heap(int[] arr, int n) {
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, n, i);
+        }
+
+    }
+
+    /**
+     * 节点的堆化
+     */
+    private static void heapify(int[] arr, int lenght, int k) {
+        if (k >= lenght) {
+            return;
+        }
+        int c1 = 2 * k + 1;
+        int c2 = 2 * k + 2;
+        int max = k;
+        if (c1 < lenght && arr[c1] > arr[max]) {
+            max = c1;
+        }
+        if (c2 < lenght && arr[c2] > arr[max]) {
+            max = c2;
+        }
+        if (max != k) {
+            swap(arr, max, k);
+            heapify(arr, lenght, max);
+        }
+
+    }
+    private static void swap(int[] arr, int max, int k) {
+        int temp = arr[k];
+        arr[k] = arr[max];
+        arr[max] = temp;
+    }
+
+
+
+// ======================= 循环
     /**
      * 堆排序
      */
@@ -38,7 +90,6 @@ public class HeapSort {
             headAdjust(list, i, 0);
         }
     }
-
     private static void headAdjust(int[] list, int len, int i) {
         int k = i, temp = list[i], index = 2 * k + 1;
         while (index < len) {
