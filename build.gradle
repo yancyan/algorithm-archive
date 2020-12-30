@@ -34,4 +34,10 @@ allprojects {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: "${junitVersion}"
+
+    implementation 'org.openjdk.jol:jol-core:0.9'
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
 }
