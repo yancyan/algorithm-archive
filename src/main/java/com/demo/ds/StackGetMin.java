@@ -1,4 +1,4 @@
-package com.demo.dat.structure;
+package com.demo.ds;
 
 import java.util.Stack;
 
